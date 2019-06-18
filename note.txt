@@ -1,0 +1,2 @@
+Useful commands:
+- create requirements.txt file from conda: conda list -e > requirements.txt
