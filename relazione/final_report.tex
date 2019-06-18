@@ -102,7 +102,7 @@ Luglio 2019\\[2cm] % Date, change the \today to a set date if you want to be pre
 \begin{abstract}
 Nel mondo del Deep Learning esistono molte tecniche per la creazioni di reti neurali in grado di riconoscere oggetti a partire da immagini.  
 La soluzione proposta vuole quindi fare una panoramica di possibili tecniche e differenti soluzioni volte alla realizzazione di una rete neurale in grado di riconoscere differenti tipi di frutta all'interno di immagini.
-L'utilizzo di diversi approcci ha permesso il confronto, l'identificazione e la sperimentazione di alcune pratiche illustrate all'interno del documento per fornire in ultima istanza alcuni suggerimenti e consigli.
+L'utilizzo di diversi approcci ha permesso il confronto, l'identificazione e la sperimentazione di alcune pratiche illustrate all'interno del documento per fornire in ultima istanza alcuni suggerimenti e consigli sull'utilizzo delle tecniche e metodologie trattate.
 \end{abstract}
 
 \section{Introduzione}
@@ -143,6 +143,26 @@ Grazie alla buona qualità del dataset disponibile non è stato necessario esegu
 È stato comunque realizzato un connettore che consente il download e il setup automatico del dataset utilizzato a partire da Kaggle, sfruttando le kaggle API. \bigskip
 Le reti neurali convoluzionali pre-trainate sono state selezionate in quanto utilizzano come dataset di riferimento ImageNet che contiene al suo interno immagini e classi simili a quelle presenti nel dataset considerato.  
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{./resources/mela.jpg}
+    \caption{Immagine del dataset appartenente alla classe: apple golden 1} 
+    \label{fig:mela}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{./resources/pesca.jpg}
+    \caption{Immagine del dataset appartenente alla classe: peach} 
+    \label{fig:pesca}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{./resources/kiwi.jpg}
+    \caption{Immagine del dataset appartenente alla classe: kiwi} 
+    \label{fig:kiwi}
+\end{figure}
 
 \section{Approccio metodologico}
 
@@ -218,6 +238,7 @@ Le architetture implementate con le due tecniche illustrate si riassumono nelle 
 \end{figure}
 
 \subsection{Esperimento 2: Freeze Layers}
+
 Nel secondo esperimento si è deciso di utilizzare un approccio di Transfer Learning simile al primo, ma questa effettuando un congelamento di tutta la rete, rimuovendo lo strato di classificazione finale che segue lo strato convoluzionale di feature extraction e attivando anche gli ultimi 4 layers convoluzionali.
 Differentemente rispetto all'esperimento 1 è stata però considerata un altro tipo di rete: VGG16 sempre ottenuta dai modelli pre-trainati di Keras. \\
 La rete utilizzata quindi ha attivi gli ultimi 4 layers convoluzionali appartenenti alla rete originale (tre layers convoluzionali e un max pooling finale), viene quindi inserito sopra ad essi una propria combinazione di layers così composti: un flattern layer a seguito della parte convoluzionale, un dense layer di 1024 unità con funzione di attivazione: Relu, un layer di Dropout con tasso equivalente a 0.5 che corrisponde alla frazione di unità di input su cui effettuare il drop e infine l'ultimo strato denso formato da 103 unità equivalenti alle classi utilizzate sul nostro dataset, usando come funzione di attivazione una relu.\\
@@ -402,6 +423,7 @@ Il tempo di training della rete sull'architettura hardware utilizzata è di:
 
 
 \subsection{Esperimento 3}
+
 Per l'esperimento 3 realizzato con la rete costruita artigianalmente e definita precedentemente sono stati ottenuti i seguenti risultati
 
 \begin{table}[H]
@@ -438,8 +460,6 @@ I primi esempi hanno un errore molto alto, iniziano a fare back propagation e ca
 
 Terzo modello, risultati buoni e interessanti, non tanto quanto transfer learning normale.
 
-
-The Results section is dedicated to presenting the actual results (i.e. measured and calculated quantities), not to discussing their meaning or interpretation. The results should be summarized using appropriate Tables and Figures (graphs or schematics). Every Figure and Table should have a legend that describes concisely what is contained or shown. Figure legends go below the figure, table legends above the table. Throughout the report, but especially in this section, pay attention to reporting numbers with an appropriate number of significant figures. 
 
 \section{Discussione dei risultati}
 
@@ -493,6 +513,7 @@ In questo modo si è in grado di definire su quali immagini i modelli sbagliano 
 
 
 \subsection{Sviluppi futuri}
+
 Gli esperimenti di transfer learning hanno dato degli ottimi risultati, c'è ancora ampio spazio di miglioramento per quanto riguarda i modelli trattati nell'esperimento 2. Per quanto riguarda l'esperimento 3 invece un progressivo fine-tuning dei parametri del modello potrebbe aiutare molto nel generare delle performance migliori rispetto a quanto ottenuto con questo primo test e quindi generare un modello definitamente più ottimale e funzionale per qualsiasi tipo di applicazione.
 Il successivo passo dopo questa sperimentazione sarà l'implementazione di un'architettura end-to-end di rilascio dei modelli in modo da favorire il loro utilizzo su diversi dispositivi, risultato ottenibile grazie all'implementazione in fase di training del salvataggio dei modelli in formato onnx.
 L'implementazione di questa architettura potrebbe essere di grande vantaggio per la realizzazione di macchinari in grado di distinguere la frutta da raccogliere all'interno di frutteti e campi consentendo, attraverso l'uso di appositi macchinari, la raccolta automatizzata dei prodotti agroalimentari.
@@ -501,11 +522,10 @@ Potrebbe essere infine utile una sperimentazione con altri modelli pre trainati 
 
 \section{Conclusioni}
 
-
-Transfer learning interessante, risultati non come il paper, ma per la velocità di training, minori risorse richieste, minore impatto e tempo di training conviene usare il metodo di transfer learning.
-Con transfer learning bisogna fare attenzione a cosa si sta facendo, possibilità di errore diminuisce e adattabilità aumenta, meno risorse richieste, ma rischio di overfitting è molto alto.
-onnx è uno standard molto interessante, facile e versatile che consente di esportare le reti neurali anche tra diversi framework, molto utile per applicazioni in ambito business.
-
+Gli esperimenti compiuti con le procedure di transfer learning hanno dato degli ottimi risultati. È sicuramente un utile e valido approccio per costruire ottimi modelli velocemente e con bassa capacità di calcolo anche se il rischio di overfitting è sempre presente e bisogna prestare molta attenzione all'adattabilità con il proprio dataset, il proprio dominio e le proprie classi in base al modello scelto. \\
+L'implementazione manuale del modello basata sul paper di riferimento ha dato dei buoni risultati comparativamente ai modelli riutilizzati, il problema è che il tempo di training e le risorse richieste sono comunque più alte rispetto alle tecniche di Transfer Learning trattate con il primo esperimento.
+La soluzione artigianale comunque ha rivelato buone performance e una rete più piccola e snella che si adatta bene a contesti in cui è importante avere dei modelli funzionali e adattabili ad un determinato caso di business come la realizzazione di un'applicazione web o mobile che necessita di performance sufficienti ma poco spazio occupato. \\
+Lo standard onnx adottato e sperimentato per salvare le reti si è rivelato un approccio vincente per l'operazionalizzazione dei processi di training e prediction, unico aspetto negativo è la poca adattabilità con il framework di Keras per quanto riguarda la fase di prediction.
 
 
 \bibliographystyle{IEEEtran}
