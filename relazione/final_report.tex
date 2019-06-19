@@ -100,15 +100,15 @@ Luglio 2019\\[2cm] % Date, change the \today to a set date if you want to be pre
 
 
 \begin{abstract}
-Nel mondo del Deep Learning esistono molte tecniche per la creazioni di reti neurali in grado di riconoscere oggetti a partire da immagini.  
+Nel mondo del Deep Learning esistono molte tecniche per la creazione di reti neurali in grado di riconoscere oggetti a partire da immagini.  
 La soluzione proposta vuole quindi fare una panoramica di possibili tecniche e differenti soluzioni volte alla realizzazione di una rete neurale in grado di riconoscere differenti tipi di frutta all'interno di immagini.
 L'utilizzo di diversi approcci ha permesso il confronto, l'identificazione e la sperimentazione di alcune pratiche illustrate all'interno del documento per fornire in ultima istanza alcuni suggerimenti e consigli sull'utilizzo delle tecniche e metodologie trattate.
 \end{abstract}
 
 \section{Introduzione}
-Nel corso degli ultimi anni, il riconoscimento di oggetti all'interno di immagini è diventato un task comune e di più semplice risoluzione rispetto a qualche anno fa.  
+Nel corso degli ultimi anni, il riconoscimento di oggetti all'interno di immagini è diventato un task comune e di più semplice risoluzione rispetto al passato.
 Grazie all'aumentare della potenza di calcolo disponibile, a nuovi tipi di architetture di reti neurali Deep, ad algoritmi sempre più efficienti implementati da framework di facile utilizzo e comprensione,è possibile ottenere delle ottime performance a partire da datasets disponibili gratuitamente online, adattando le soluzioni realizzate in modo sempre meno complesso ai differenti casi d'uso.  
-A tal proposito per comprendere l'uso delle differenti tecniche e per sperimentare alcuni dei diversi approcci che è possibile adottare per addestrare delle reti neurali in grado di riconoscere oggetti all'interno di immagini più o meno complesse, è stato realizzato uno studio contenente tre metodologie di lavoro differenti:
+A tal proposito per comprendere l'uso delle differenti tecniche e per sperimentare alcuni dei diversi approcci che è possibile adottare, per addestrare delle reti neurali in grado di riconoscere oggetti all'interno di immagini più o meno complesse, è stato realizzato uno studio contenente tre metodologie di lavoro differenti:
 \begin{enumerate}
 \item addestramento di reti neurali utilizzando tecniche di Transfer Learning \cite{transferlearning}
 \item utilizzo di tecniche di Layer Freezing per creare strutture personalizzate a partire da reti neurali esistenti
@@ -120,13 +120,13 @@ Come ultimo risultato del lavoro svolto, sono stati analizzati e discussi differ
 
 
 \section{Dataset}
-Per il progetto è stato utilizzato un dataset disponibile gratuitamente all'interno della piattaforma: Kaggle chiamato: molteam fruits 360 dataset \cite{dataset}
+Per il progetto è stato utilizzato un dataset disponibile gratuitamente all'interno della piattaforma: Kaggle chiamato: moltean fruits 360 dataset \cite{dataset}
 Questa collezione di dati viene spesso utilizzata per confrontare tecniche di Deep Learning, per studiare e confrontare approcci e metodi differenti.
 È composto da un numero di immagini totale pari a: 71125, con un traininset diviso in 53177 immagini contenti un frutto per ogni immagine con dimensione per ogni immagine di 100x100 pixels.  
 Il validation set contiene al suo interno 17845 immagini sempre rappresentati un frutto per ogni immagine, mentre è presente all'interno dei dati disponibile anche un set di immagini contenente 103 immagini dove è possibile trovare più di un frutto all'interno di ogni singola immagine.  
 Il numero di classi all'interno dei dati al momento dell'utilizzo e del progetto è di 103 classi differenti, ognuna appartenente ad un frutto differente.  
-Il dataset non è comprensivo di tutti i tipi di frutto esistenti e viene costantemente aggiornato e arricchito.
-Il progetto dunque assume che la numerosità delle classi all'interno del dataset sia sufficiente a coprire la maggior parte delle casistiche di frutti comunemente venduti in commercio e disponibili.  
+Il dataset non è comprensivo di tutti i tipi di frutta esistenti e viene costantemente aggiornato e arricchito. \\
+Il progetto dunque assume che la numerosità delle classi all'interno del dataset sia sufficiente a coprire la maggior parte delle casistiche di frutti comunemente venduti in commercio e disponibili.  \\
 La particolarità di questo dataset è che sono disponibili una sequenza di immagini per ogni frutto ottenute con una serie di fotografie scattate in sequenza che consentono la visione del frutto da diversi tipi di angolazione.  
   
  Per favorire l'apprendimento delle reti neurali utilizzate, sono state applicate anche differenti trasformazioni al dataset:
@@ -168,20 +168,28 @@ Le reti neurali convoluzionali pre-trainate sono state selezionate in quanto uti
 
 Per raggiungere l'obiettivo del progetto, ovvero la sperimentazione e la validazione di differenti tecniche e approcci per la classificazione delle immagini sono stati effettuati tre tipi di esperimenti.  
 Per effettuare tali sperimentazioni è stata impiegata una singola e determinata architettura hardware che ha permesso di effettuare il training e la validazione degli algoritmi impiegati.  
-Tutti i benchmark, analisi, prototipazione e training sono stati effettuati utilizzando python, keras come framework di riferimento basato su tensorflow GPU versione 1 con una scheda video Nvidia GTX1070 con 8 gb di vram, 16 gb di ram del sistema e un i5-8300.  
+Tutti i benchmark, analisi, prototipazione e training sono stati effettuati utilizzando python, keras come framework di riferimento basato su tensorflow GPU versione 1, una scheda video Nvidia GTX1070 con 8 gb di vram, 16 gb di ram del sistema e un processore i5-8300.  
 Il codice realizzato è disponibile su github al seguente indirizzo:  \url{https://github.com/JeyDi/FruitRecognition} \bigskip
 
-Il transfer learning è una tecnica largamente utilizzata nel mondo del Deep learning, diventando uno strumento chiave nel mondo delle applicazioni di intelligenza artificiale, in particolare nelle aree di Computer Vision, Natural Language Processing, Speech Recognition, consentendo di produrre risultati determinanti sia in termini di performance, sia in termini di adattamento che di velocità di messa in produzione.  
+Il Transfer Learning è una tecnica largamente utilizzata nel mondo del Deep learning, diventando uno strumento chiave nel mondo delle applicazioni di intelligenza artificiale, in particolare nelle aree di Computer Vision, Natural Language Processing, Speech Recognition, consentendo di produrre risultati determinanti sia in termini di performance, sia in termini di adattamento che di velocità di messa in produzione.  
 La chiave di questo tipo di modelli è appunto la facilità di realizzazione di modelli accurati in un tempo significativo.  
 Elemento fondamentale di questo approccio è il riutilizzo di modelli pre-trainati, ovvero modelli di Deep Learning che sono stati addestrati su dataset simili per compiere tasks che si avvicinano a quelli da implementare.  
 Un algoritmo in grado di compiere il riconoscimento di oggetti all'interno di immagini sfrutta come tipologia di architettura delle reti neurali convoluzionali solitamente dotate di uno schema architetturale comune: un input definito, una base convoluzionale che consente di eseguire una fase di feature extraction a partire dalle immagini e successivamente un classificatore in grado di classificare correttamente le immagini in base alle classi considerate per arrivare ad una predizione quanto più veritiera possibile. 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{./logo.png}
-    \caption{Esempio di immagine} 
-    \label{fig:logo}
+    \includegraphics[width=0.2\textwidth]{./resources/CNNArchitecture.png}
+    \caption{Architettura di una CNN} 
+    \label{fig:cnn_architecture}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{./resources/transferLearningStrategies.png}
+    \caption{Strategie di transfer learning} 
+    \label{fig:transfer_learning_strategies}
+\end{figure}
+
 Il numero di layers e di nodi all'interno della base convoluzionale può variare a seconda del tipo di architettura e ovviamente questo esempio vuol solamente essere una semplificazione rispetto all'implementazione reale di una rete neurale convoluzionale.  
 Una volta ottenuta una rete convoluzionale pre-trainata su un dataset e su un task simile si procede all'inserimento all'interno dell'architettura il proprio classificatore che consente di riconoscere le nuove immagini in input che verranno utilizzate rispetto alle nuove classi definite.  
 Per fare questo si possono adottare tre tipi di approcci:
@@ -239,7 +247,7 @@ Le architetture implementate con le due tecniche illustrate si riassumono nelle 
 
 \subsection{Esperimento 2: Freeze Layers}
 
-Nel secondo esperimento si è deciso di utilizzare un approccio di Transfer Learning simile al primo, ma questa effettuando un congelamento di tutta la rete, rimuovendo lo strato di classificazione finale che segue lo strato convoluzionale di feature extraction e attivando anche gli ultimi 4 layers convoluzionali.
+Nel secondo esperimento si è deciso di utilizzare un approccio di Transfer Learning simile al primo, ma questa volta effettuando un congelamento parziale della rete, rimuovendo lo strato di classificazione finale che segue lo strato convoluzionale di feature extraction e attivando anche gli ultimi 4 layers convoluzionali.
 Differentemente rispetto all'esperimento 1 è stata però considerata un altro tipo di rete: VGG16 sempre ottenuta dai modelli pre-trainati di Keras. \\
 La rete utilizzata quindi ha attivi gli ultimi 4 layers convoluzionali appartenenti alla rete originale (tre layers convoluzionali e un max pooling finale), viene quindi inserito sopra ad essi una propria combinazione di layers così composti: un flattern layer a seguito della parte convoluzionale, un dense layer di 1024 unità con funzione di attivazione: Relu, un layer di Dropout con tasso equivalente a 0.5 che corrisponde alla frazione di unità di input su cui effettuare il drop e infine l'ultimo strato denso formato da 103 unità equivalenti alle classi utilizzate sul nostro dataset, usando come funzione di attivazione una relu.\\
 La loss function utilizzata è una categorical crossentropy come nell'esperimento 1, mentre l'ottimizzatore impiegato è sempre un Stochastic gradient descent optimizer. \bigskip
@@ -264,6 +272,7 @@ L'architettura relativa all'esperimento 2 versione 1 con VGG16 è rappresentata 
 
 
 \subsection{Esperimento 3: Implementazione rete neurale}
+
 Dopo aver effettuato diversi esperimenti utilizzando tecniche di transfer learning si è deciso di implementare anche una rete neurale partendo dal paper di riferimento associato al dataset \cite{customnet} in modo da confrontare i risultati e verificare se un approccio completamente manuale fosse migliore rispetto all'utilizzo di reti neurali esistenti, sia in termini di facilità di realizzazione, tempo di training che di risultati effettivi. \\
 Le immagini usate per il training e per la validazione sono state trattate sempre con gli stessi metodi precedenti con una risoluzione di 100x100 pixels di altezza e larghezza. \\
 La configurazione della rete è illustrata nella seguente tabella: \\
@@ -288,7 +297,7 @@ La configurazione della rete è illustrata nella seguente tabella: \\
     \caption{\label{tab:esperimento3_configurazione}Tabella di configurazione della rete neurale convoluzionale creata a mano}
 \end{table}
 
-Per il modello utilizzato sono state impiegate come funzione di loss: categorical cross entropy in quanto i nostri target da predirre sono 103 classi categoriche numeriche tramite softmax. Come ottimizzatore si è scelto di utilizzare: adam ovvero adaptive moment estimation che ha risultati migliori rispetto ad altri metodi stocastici di ottimizzazione \cite{adam}.
+Per il modello utilizzato sono state impiegate come funzione di loss: categorical crosse ntropy in quanto i nostri target da predirre sono 103 classi categoriche numeriche tramite softmax. Come ottimizzatore si è scelto di utilizzare: adam ovvero adaptive moment estimation che ha risultati migliori rispetto ad altri metodi stocastici di ottimizzazione \cite{adam}.
 
 Il disegno architetturale della rete implementata con le relative specifiche strutturali è rappresentato dall'immagine \ref{fig:architettura-esperimento3}
 \begin{figure}
@@ -362,7 +371,7 @@ Mentre i grafici relativi all'andamento delle performance rispetto al numero di 
         \label{fig:plot_exp1_p2_loss}
 	\end{subfigure}
 \end{figure}
-Il tempo di training della rete sull'architettura hardware utilizzata è di:
+Il tempo medio di training di una rete sull'architettura hardware utilizzata è di circa due ore e 30 minuti, mentre il modello in formato onnx su disco pesa: all'incirca 200 MB in entrambi i casi.
 
 \subsection{Esperimento 2}
 
@@ -419,7 +428,7 @@ Mentre i grafici relativi all'andamento delle performance rispetto al numero di 
         \label{fig:plot_exp2_p2_loss}
 	\end{subfigure}
 \end{figure}
-Il tempo di training della rete sull'architettura hardware utilizzata è di:
+Il tempo medio di training di una rete sull'architettura hardware utilizzata è di circa quattro ore, mentre il modello in formato onnx su disco pesa: all'incirca 160 MB in entrambi i casi.
 
 
 \subsection{Esperimento 3}
@@ -449,8 +458,7 @@ Per l'esperimento 3 realizzato con la rete costruita artigianalmente e definita 
 	\end{subfigure}
 \end{figure}
 
-Il tempo di training della rete sull'architettura hardware utilizzata è di:
-
+Il tempo medio di training della rete sull'architettura hardware utilizzata è di circa tre ore, mentre il modello in formato onnx su disco pesa: 443 KB
 
 Nel secondo esperimento dire che ci sono problemi di: forgetting.
 All'epoca 1 e 2 ho un salto sulla loss, in questo momento quindi il modello sta overfittando.  
@@ -509,12 +517,42 @@ Avendo a disposizione una rete più grande e complessa è necessario utilizzare 
 Considerando i modelli impiegati nell'esperimento 1 e nell'esperimento 3 è importante validare ed evidenziare quali sono gli errori all'interno del validation set utilizzato per verificare le performance del modello.
 In questo modo si è in grado di definire su quali immagini i modelli sbagliano più frequentemente e per quale tipo di input.
 
-**\textbf{inserire valutazione degli errori per esperimento 1 ed esperimento 3}**
+Il numero di immagini valutate non correttamente per l'esperimento 1 su una predizione del validation set è di 47 su 17845 immagini.
+Il rapporto di errori di classificazione sempre sullo stesso dataset per l'esperimento 3 è di 53 su 17845 immagini.
 
+Alcuni esempi di immagini non correttamente classificate sono le seguenti (in entrambi i casi):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{./resources/error1.png}
+    \caption{Errore nella predizione: ground truth: Apple Red 2, prediction: Apple Braeburn, confidenza: 0.759} 
+    \label{fig:mela}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{./resources/error2.png}
+    \caption{Errore nella predizione: ground truth: Pear, prediction: Apple Golden 3, confidenza: 0.452} 
+    \label{fig:mela}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{./resources/error3.png}
+    \caption{Errore nella predizione: ground truth: Pepino, prediction: Grape White 2, confidenza: 0.481} 
+    \label{fig:error3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{./resources/error4.png}
+    \caption{Errore nella predizione: ground truth: Strawberry Wedge, prediction: Avocado pipe , confidenza: 0.699} 
+    \label{fig:error4}
+\end{figure}
 
 \subsection{Sviluppi futuri}
 
-Gli esperimenti di transfer learning hanno dato degli ottimi risultati, c'è ancora ampio spazio di miglioramento per quanto riguarda i modelli trattati nell'esperimento 2. Per quanto riguarda l'esperimento 3 invece un progressivo fine-tuning dei parametri del modello potrebbe aiutare molto nel generare delle performance migliori rispetto a quanto ottenuto con questo primo test e quindi generare un modello definitamente più ottimale e funzionale per qualsiasi tipo di applicazione.
+Gli esperimenti di transfer learning hanno dato degli ottimi risultati, c'è ancora ampio spazio di miglioramento per quanto riguarda i modelli trattati nell'esperimento 2. Per quanto riguarda l'esperimento 3 invece un progressivo fine-tuning dei parametri del modello potrebbe aiutare molto nel generare delle performance migliori rispetto a quanto ottenuto con i primi test e quindi generare un modello definitamente più ottimale e funzionale per qualsiasi tipo di applicazione.
 Il successivo passo dopo questa sperimentazione sarà l'implementazione di un'architettura end-to-end di rilascio dei modelli in modo da favorire il loro utilizzo su diversi dispositivi, risultato ottenibile grazie all'implementazione in fase di training del salvataggio dei modelli in formato onnx.
 L'implementazione di questa architettura potrebbe essere di grande vantaggio per la realizzazione di macchinari in grado di distinguere la frutta da raccogliere all'interno di frutteti e campi consentendo, attraverso l'uso di appositi macchinari, la raccolta automatizzata dei prodotti agroalimentari.
 Potrebbe essere infine utile una sperimentazione con altri modelli pre trainati in modo da condurre un test più accurato e di larga scala anche su approcci differenti che potrebbero fornire risultati migliori rispetto a quelli impiegati per questo test.
@@ -522,10 +560,11 @@ Potrebbe essere infine utile una sperimentazione con altri modelli pre trainati 
 
 \section{Conclusioni}
 
-Gli esperimenti compiuti con le procedure di transfer learning hanno dato degli ottimi risultati. È sicuramente un utile e valido approccio per costruire ottimi modelli velocemente e con bassa capacità di calcolo anche se il rischio di overfitting è sempre presente e bisogna prestare molta attenzione all'adattabilità con il proprio dataset, il proprio dominio e le proprie classi in base al modello scelto. \\
+Gli esperimenti compiuti con le procedure di transfer learning hanno dato degli ottimi risultati. Le tecniche utilizzate sono sicuramente un utile e valido approccio per costruire ottimi modelli velocemente e con bassa capacità di calcolo, anche se il rischio di overfitting è sempre presente e bisogna prestare molta attenzione all'adattabilità con il proprio dataset, il proprio dominio e le proprie classi, in base al modello scelto. \\
 L'implementazione manuale del modello basata sul paper di riferimento ha dato dei buoni risultati comparativamente ai modelli riutilizzati, il problema è che il tempo di training e le risorse richieste sono comunque più alte rispetto alle tecniche di Transfer Learning trattate con il primo esperimento.
-La soluzione artigianale comunque ha rivelato buone performance e una rete più piccola e snella che si adatta bene a contesti in cui è importante avere dei modelli funzionali e adattabili ad un determinato caso di business come la realizzazione di un'applicazione web o mobile che necessita di performance sufficienti ma poco spazio occupato. \\
+La soluzione artigianale comunque ha rivelato buone performance e una rete più piccola e snella in grado di adattarsi bene a contesti in cui è importante avere dei modelli funzionali impiegabili su determinati casi d'uso e pratici come la realizzazione di un'applicazione web o mobile che necessita di performance sufficienti ma poco spazio occupato oppure nell'utilizzo di sistemi embedded. \\
 Lo standard onnx adottato e sperimentato per salvare le reti si è rivelato un approccio vincente per l'operazionalizzazione dei processi di training e prediction, unico aspetto negativo è la poca adattabilità con il framework di Keras per quanto riguarda la fase di prediction.
+Nel complesso, le soluzioni adottate e le architetture impiegate si sono rivelate corrette per rispondere alla domanda iniziale, ovvero trovare delle tecniche in grado di classificare correttamente differenti tipi di frutta a partire da immagini.
 
 
 \bibliographystyle{IEEEtran}
